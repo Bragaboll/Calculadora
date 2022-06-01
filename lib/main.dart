@@ -30,12 +30,15 @@ class _CalculadoraState extends State<Calculadora> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calculadora'),
+        title: Center(child: Text('Calculadora')),
       ),
       body: Column(
         children: [
           _buildDisplay(),
-          _buildButtons(),
+          _buildButtons1(),
+          _buildButtons2(),
+          _buildButtons3(),
+          _buildButtons4(),
         ],
       ),
     );
@@ -43,233 +46,280 @@ class _CalculadoraState extends State<Calculadora> {
 
   Widget _buildDisplay() {
     return Container(
-        width: double.maxFinite,
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(20),
+      margin: EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
           border: Border.all(width: 2),
-        ),
-        child: Text(
-          display,
-          style: TextStyle(fontSize: 40, color: Colors.white),
-          textAlign: TextAlign.end,
-        ));
+          color: Colors.green),
+      child: Text(
+        display,
+        style: TextStyle(fontSize: 40, color: Colors.white),
+        textAlign: TextAlign.end,
+      ),
+    );
   }
 
-  Widget _buildButtons() {
+  Widget _buildButtons1() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              ElevatedButton(
-                  onPressed: () {
-                    precionarBotao('7');
-                  },
-                  child: Container(
-                    height: 20,
-                    width: 10,
-                    color: Colors.blue,
-                    child: Text('7'),
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    precionarBotao('4');
-                  },
-                  child: Container(
-                    height: 20,
-                    width: 10,
-                    color: Colors.blue,
-                    child: Text('4'),
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    precionarBotao('1');
-                  },
-                  child: Container(
-                    height: 20,
-                    width: 10,
-                    color: Colors.blue,
-                    child: Text('1'),
-                  )),
-              ElevatedButton(
-                  onPressed: () {
-                    limparDisplay();
-                  },
-                  child: Container(
-                    height: 20,
-                    width: 10,
-                    color: Colors.blue,
-                    child: Text('C'),
-                  )),
-            ],
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('7');
+            },
+            child: Text(
+              '7',
+              style: TextStyle(fontSize: 20),
+            ),
           ),
         ),
-        Column(
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('8');
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('8'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('5');
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('5'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('2');
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('2'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('0');
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('0'),
-                )),
-          ],
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('8');
+            },
+            child: Text(
+              '8',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
         ),
-        Column(
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('9');
-                },
-                child: Container(
-                    height: 20,
-                    width: 10,
-                    color: Colors.blue,
-                    child: Text('9'))),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('6');
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('6'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('3');
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('3'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  calcular();
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('='),
-                )),
-          ],
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('9');
+            },
+            child: Text(
+              '9',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
         ),
-        Column(
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('/');
-                  operador = '/';
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('/'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('*');
-                  operador = '*';
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('*'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('-');
-                  operador = '-';
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('-'),
-                )),
-            ElevatedButton(
-                onPressed: () {
-                  precionarBotao('+');
-                  operador = '+';
-                },
-                child: Container(
-                  height: 20,
-                  width: 10,
-                  color: Colors.blue,
-                  child: Text('+'),
-                )),
-          ],
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('*');
+              operador = '*';
+            },
+            child: Text(
+              '*',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
         ),
       ],
     );
   }
 
-  void calcular() {
-    List<String> valores = display.split(operador);
+  Widget _buildButtons2() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('4');
+            },
+            child: Text(
+              '4',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('5');
+            },
+            child: Text(
+              '5',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('6');
+            },
+            child: Text(
+              '6',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('/');
+              operador = '/';
+            },
+            child: Text(
+              '/',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
-    int valor1 = int.parse(valores[0]);
-    int valor2 = int.parse(valores[1]);
-    num resultado = 0;
+  Widget _buildButtons3() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('1');
+            },
+            child: Text(
+              '1',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('2');
+            },
+            child: Text(
+              '2',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('3');
+            },
+            child: Text(
+              '3',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('-');
+              operador = '-';
+            },
+            child: Text(
+              '-',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
-    if (operador == '+') {
-      resultado = valor1 + valor2;
-    }
-    if (operador == '-') {
-      resultado = valor1 - valor2;
-    }
-    if (operador == '*') {
-      resultado = valor1 * valor2;
-    }
-    if (operador == '/') {
-      resultado = valor1 / valor2;
-    }
-    setState(() {
-      display = resultado.toString();
-    });
+  Widget _buildButtons4() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('C');
+              limparDisplay();
+            },
+            child: Text(
+              'C',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('0');
+            },
+            child: Text(
+              '0',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              calcular();
+            },
+            child: Text(
+              '=',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.all(10),
+          width: 60,
+          height: 60,
+          child: ElevatedButton(
+            onPressed: () {
+              precionarBotao('+');
+              operador = '+';
+            },
+            child: Text(
+              '+',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   void precionarBotao(String text) {
@@ -280,7 +330,31 @@ class _CalculadoraState extends State<Calculadora> {
 
   void limparDisplay() {
     setState(() {
-      display = "";
+      display = '';
+    });
+  }
+
+  void calcular() {
+    List<String> valores = display.split(operador);
+    int valor1 = int.parse(valores[0]);
+    int valor2 = int.parse(valores[1]);
+    num resultado = 0;
+
+    if (operador == '+') {
+      resultado = valor1 + valor2;
+    }
+    if (operador == '-') {
+      resultado = valor1 - valor2;
+    }
+    if (operador == '/') {
+      resultado = valor1 / valor2;
+    }
+    if (operador == '*') {
+      resultado = valor1 * valor2;
+    }
+
+    setState(() {
+      display = resultado.toString();
     });
   }
 }
